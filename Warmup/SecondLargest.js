@@ -33,6 +33,8 @@
 
 //Find the second largest number in an array.
 const secondLargest = (arr) => {
+  if (arr.length < 2) return null;
+
   let largest = -Infinity;
   let secondLargest = -Infinity;
 
@@ -40,7 +42,7 @@ const secondLargest = (arr) => {
     if (largest < arr[i]) {
       secondLargest = largest;
       largest = arr[i];
-    } else if (secondLargest < arr[i]) {
+    } else if (secondLargest < arr[i] && arr[i] !== largest) {
       secondLargest = arr[i];
     }
   }
