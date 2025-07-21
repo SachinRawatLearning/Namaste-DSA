@@ -2,24 +2,27 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var sortArray = function (nums) {
-  if (nums.length <= 1) return nums;
-  let mid = Math.floor(nums.length / 2);
-  let left = sortArray(nums.slice(0, mid));
-  let right = sortArray(nums.slice(mid));
-  return merge(left, right);
-};
-
-function merge(left, right) {
-  let res = [],
-    i = 0,
-    j = 0;
-  while (i < left.length && j < right.length) {
-    if (left[i] < right[j]) {
-      res.push(left[i++]);
+const merge = (arr1, arr2) => {
+  let left = 0;
+  let right = 0;
+  const sortedArray = [];
+  while (left < arr1.length && right < arr2.length) {
+    if (arr1[left] < arr2[right]) {
+      sortedArray.push(arr1[left]);
+      left++;
     } else {
-      res.push(right[j++]);
+      sortedArray.push(arr2[right]);
+      right++;
     }
   }
-  return [...res, ...left.slice(i), ...right.slice(j)];
-}
+  return [...sortedArray, ...arr1.slice(left), ...arr2.slice(right)];
+};
+
+var sortArray = function (nums) {
+  if (nums.length <= 1) return nums;
+
+  const middle = Math.floor(nums.length / 2);
+  const left = sortArray(nums.slice(0, middle));
+  const right = sortArray(nums.slice(middle));
+  return merge(left, right);
+};
