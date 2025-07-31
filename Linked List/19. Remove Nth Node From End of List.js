@@ -33,6 +33,8 @@
  * @param {number} n
  * @return {ListNode}
  */
+
+//Two-Pass
 var removeNthFromEnd = function (head, n) {
   const sentinel = new ListNode();
   sentinel.next = head;
@@ -49,5 +51,26 @@ var removeNthFromEnd = function (head, n) {
   }
 
   prev.next = prev.next.next;
+  return sentinel.next;
+};
+
+//One-Pass
+var removeNthFromEnd = function (head, n) {
+  //Create and Attach sentinel node to head
+  const sentinel = new ListNode();
+  sentinel.next = head;
+  //Move first pointer to n position
+  let second = (first = sentinel);
+  for (let i = 0; i < n; i++) {
+    first = first.next;
+  }
+  //Increment first and second pointer until first pointer reaches end
+  while (first.next) {
+    first = first.next;
+    second = second.next;
+  }
+  //Delete (second+1)th node
+  second.next = second.next.next;
+
   return sentinel.next;
 };
