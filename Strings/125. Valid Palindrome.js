@@ -43,3 +43,24 @@ var isPalindrome = function (s) {
 };
 //Time->O(n)
 //Space->O(n)
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+  s = s.toLowerCase();
+  let left = 0;
+  let right = s.length - 1;
+  while (left < right) {
+    if (s[left] === s[right]) {
+      left++;
+      right--;
+    } else if (!s[left].match(/[a-zA-Z0-9]/i)) left++;
+    else if (!s[right].match(/[a-zA-Z0-9]/i)) right--;
+    else return false;
+  }
+  return true;
+};
+//Time->O(n)
+//Space->O(1)
