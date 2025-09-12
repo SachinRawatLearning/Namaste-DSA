@@ -46,3 +46,27 @@ var groupAnagrams = function (strs) {
 };
 //Time-> O(n*mlogn)
 //Space->O(n*m)
+
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function (strs) {
+  const hashMap = {};
+  for (let i = 0; i < strs.length; i++) {
+    let str = strs[i];
+    let arr = new Array(26).fill(0);
+    for (let j = 0; j < str.length; j++) {
+      arr[str.charCodeAt(j) - 97]++;
+    }
+    let res = arr.join("#");
+    if (hashMap[res]) {
+      hashMap[res].push(str);
+    } else {
+      hashMap[res] = [str];
+    }
+  }
+  return Object.values(hashMap);
+};
+//Time-> O(n*m)
+//Space->O(n*m)
