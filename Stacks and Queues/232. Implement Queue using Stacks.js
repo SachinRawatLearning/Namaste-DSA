@@ -57,11 +57,6 @@ MyQueue.prototype.pop = function () {
     for (let i = 0; i < n; i++) {
       this.s2.push(this.s1.pop());
     }
-  } else {
-    // let n2 = this.s2.length;
-    // for (let i = 0; i < n2; i++) {
-    //     this.s1.push(this.s2.pop());
-    // }
   }
   return this.s2.pop();
 };
@@ -76,11 +71,6 @@ MyQueue.prototype.peek = function () {
       const last = this.s1.pop();
       this.s2.push(last);
     }
-  } else {
-    // let n2 = this.s2.length;
-    // for (let i = 0; i < n2; i++) {
-    //     this.s1.push(this.s2.pop());
-    // }
   }
   return this.s2[this.s2.length - 1];
 };
@@ -100,3 +90,5 @@ MyQueue.prototype.empty = function () {
  * var param_3 = obj.peek()
  * var param_4 = obj.empty()
  */
+
+//Time Complexity: Worst -> O(n), Best -> O(1)
