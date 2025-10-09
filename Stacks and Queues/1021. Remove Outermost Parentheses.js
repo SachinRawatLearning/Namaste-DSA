@@ -54,3 +54,29 @@ var removeOuterParentheses = function (s) {
 
   return res;
 };
+//Time,Space-> O(n)
+
+//Without Stack:
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var removeOuterParentheses = function (s) {
+  let depth = 0;
+  let res = "";
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(") {
+      if (depth > 0) res += "(";
+      depth++;
+    } else {
+      depth--;
+      if (depth > 0) res += ")";
+    }
+  }
+
+  return res;
+};
+//Time-> O(n)
+//Space-> O(1) (Strings are immutable in js)
